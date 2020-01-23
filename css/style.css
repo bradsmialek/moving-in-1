@@ -1,0 +1,25 @@
+body{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: rgb(108, 157, 197);
+}
+
+section{
+    font-family: cursive;
+    
+}
+#login {
+    float: right;
+
+}
+.info-seccion{
+    align-content: center;
+    background-color: tomato;
+    width: 40%;
+    float: left;
+
+    padding: 10px 10px 10px 10px;
+}
+.footer-seccion{
+    float:inline-start ;
+}
+
