@@ -12,11 +12,11 @@ function validateEmail(varEmail, varAge)
 function sayHi()
 {
     var country = prompt("Which country are your visit us?","country here...");
-    var idiom;
+    var idiom, costMsg;
 
     if (country === "usa" || country === "USA")  {
         greetings = 'Hello there! How many movers do you need?';
-        idiom= "eng";
+        idiom= "en";
     } else if (country === "mexico" || country === "MEXICO" || country ==="mx") {
         greetings = 'Hola! cuántas personas de mudanza necesitas?';
         idiom="es";
@@ -30,30 +30,41 @@ function sayHi()
         movers = prompt(greetings,2);
     }
 
+    var totalCostMovers = moversCost(movers,idiom);
+    // create total cost message for the user
+    if (idiom === "en")  {
+        costMsg = 'This is the total cost for ' + movers + ' workers in '  + country + ": $ "; 
+    } else if (idiom === "es") {
+        costMsg = 'Este es el costo total para ' + movers + ' cargadores en ' + country + ":$ "; 
+    } else {
+        costMsg = 'Total cost for / Costo total para '  + movers + ' workers in / cargadores en '  + country + ": $ "; 
+    }
     
+    costMsg = costMsg + totalCostMovers;
 
-    //confirm(greetings,true)
-    //greetings = "<i>" + greetings + "</i>"
-    document.write('<h3>' + idiom + "  " + movers + '</hr>'); 
+   
+    document.write(costMsg); 
+    confirm(costMsg,true)
     
 } //function sayHi()
 
+// This funtion obtain the total cost of the movers, depending the day rate of the country
+function moversCost(movers,idiom)
+{
+    var dayRate, totalMoversCost, i;
+    totalMoversCost=0;
 
-
-
-
-
-
-
-/*var country = prompt("Which country are your visit us?","country here...");
-
-if (country === "usa" || country === "USA")  {
-    greetings = 'Hello there! welcome!';
-} else if (country === "mexico" || country === "MEXICO" || "mx") {
-    greetings = 'Hola! que gusto que nos visites!';
-} else {
-    greetings = 'So glad you are here!';
-}
-
-/* document.write('<h3>' + greetings + "  :-D" + '</hr>'); * /
-confirm(greetings,true) */
+    if (idiom === "en")  {
+        dayRate = 70;
+    } else if (idiom === "es") {
+        dayRate = 50;
+    } else {
+        dayRate = 100;
+    }
+    
+    for (i = 0; i < movers; i++) {
+        totalMoversCost = totalMoversCost + dayRate;
+    }
+    return totalMoversCost;
+    //return ((dayRate*movers));
+} //funtion moversCost
